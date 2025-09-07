@@ -88,26 +88,36 @@
         </div>
 
         <!-- div for adding cart -->
-        <div class="w-[20%] h-[300px] border-2">
-
+        <div class="w-[20%] h-auto p-3">
+            <h2 class="font-bold text-lg mb-3">Your Cart</h2>
+            <div id="cart-items" class="space-y-2">
+                <!-- <div class="space-y-2">
+                    <h3 class="font-bold text-lg">plantName</h3>
+                    <p class="text-gray-600">plantPrice</p>
+                </div>
+                <button class="btn">❌</button> -->
+            </div>
+            <p class="mt-4 font-semibold">Total: <span id="cart-total">0</span> ৳</p>
         </div>
+
     </section>
 
-<!-- modal -->
-<div id="modal-container" class="hidden fixed inset-0 bg-green-300 opacity-90 flex justify-center items-center">
-  <div id="modal-content" class="bg-white p-6 rounded-lg max-w-md w-full">
-      <h2 id="modal-title" class="text-xl font-bold my-3"></h2>
-      <img id="modal-image" class="w-full h-48 object-cover rounded-md" />
-      <p  class="font-bold text-xl">Category : <span id="modal-category" class="font-normal"></span></p>
-      <p class="mt-2 font-semibold">Price: <span id="modal-price"></span></p>
-      <p  class="mt-2 font-bold">Description: <span id="modal-description" class="text-gray-600 font-normal"></span></p>
-      <button id="close-modal" class="text-lg font-bold float-right btn mt-2">Close</button>
-  </div>
-</div>
+    <!-- modal -->
+    <div id="modal-container" class="hidden fixed inset-0 bg-green-300 opacity-100 flex justify-center items-center">
+        <div id="modal-content" class="bg-white p-6 rounded-lg max-w-md w-full">
+            <h2 id="modal-title" class="text-xl font-bold my-3"></h2>
+            <img id="modal-image" class="w-full h-48 object-cover rounded-md" />
+            <p class="font-bold text-xl">Category : <span id="modal-category" class="font-normal"></span></p>
+            <p class="mt-2 font-semibold">Price: <span id="modal-price"></span></p>
+            <p class="mt-2 font-bold">Description: <span id="modal-description"
+                    class="text-gray-600 font-normal"></span></p>
+            <button id="close-modal" class="text-lg font-bold float-right btn mt-2">Close</button>
+        </div>
+    </div>
 
 
 
-<!--  -->
+    <!--  -->
 
     <!-- about the campaign section-->
     <section class="mt-28 max-w-[1090px] mx-auto">

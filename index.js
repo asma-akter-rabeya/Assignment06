@@ -69,7 +69,7 @@ const showAllCard = (plants) => {
                     <button onclick="showModal('${plant.id}')"  id="plant-${plant.id}" class="btn p-4 text-green-700 bg-green-300 rounded-[999px]">${plant.category}</button>
                     <p><i class="fa-solid fa-bangladeshi-taka-sign"></i><span>${plant.price}</span></p>
                 </div>
-                <button class="btn text-white bg-green-700 rounded-[999px] btn-block">Add to Cart</button>
+                <button onclick="addToCart('${plant.id}')" class="btn text-white bg-green-700 rounded-[999px] btn-block">Add to Cart</button>
             
             </div>
         `;
@@ -79,7 +79,7 @@ const showAllCard = (plants) => {
 
 
     })
- 
+
 }
 
 
@@ -106,8 +106,84 @@ document.getElementById("close-modal").addEventListener("click", () => {
 });
 
 
+// functionality for adding card
+// global variable
+let allPrice = []
+let sum = 0;
+const addingCardId = document.getElementById("cart-items")
+
+const addToCart = (plantId) => {
+    fetch(`https://openapi.programming-hero.com/api/plant/${plantId}`)
+        .then(res => res.json())
+        .then((data) => {
+
+            const plantName = data.plants.name;
+            const plantPrice = data.plants.price;
+            allPrice.push(plantPrice);
+            sum = allPrice.reduce((acc, price) => acc + price, 0);
+            addingCardId.innerHTML += `
+            <div class="flex justify-between items-center bg-white p-4 mb-2">
+                 <div>
+                     <h3 class="font-bold text-lg">${plantName}</h3>
+                      <p class="text-gray-600">${plantPrice} ৳</p>
+                 </div>
+                 <button class="btn">❌</button>
+            </div>
+        `;
+            document.getElementById("cart-total").innerText = sum;
+
+            // activating the cross button
+            
+
+
+            // console.log(sum);
+            // console.log(allPrice)
+            // console.log(plantName)
+            // console.log(plantPrice)
+        })
+
+
+}
+
+
+// functionality  for adding card
+
+// let cart = [];
+// let total = 0;
+
+// const addToCart = (plant) => {
+//     cart.push(plant);
+//     total += parseFloat(plant.price);
+//     updateCartUI();
+// };
+
+// const removeFromCart = (index) => {
+//     total -= parseFloat(cart[index].price);
+//     cart.splice(index, 1);
+//     updateCartUI();
+// };
+
+// const updateCartUI = () => {
+//     const cartItemsContainer = document.getElementById("cart-items");
+//     cartItemsContainer.innerHTML = "";
+//     cart.forEach((item, index) => {
+//         const div = document.createElement("div");
+//         div.classList.add("flex", "justify-between", "items-center", "border-b", "pb-1");
+//         div.innerHTML = `
+//             <p>${item.name} - ${item.price} ৳</p>
+//             <button class="text-red-500 font-bold" onclick="removeFromCart(${index})">X</button>
+//         `;
+//         cartItemsContainer.appendChild(div);
+//     });
+//     document.getElementById("cart-total").innerText = total.toFixed(2);
+// };
+
+
+
+
+
 
 // load all plants by default
 fetch("https://openapi.programming-hero.com/api/plants")
-  .then(res => res.json())
-  .then(data => showAllCard(data.plants));
+    .then(res => res.json())
+    .then(data => showAllCard(data.plants));
