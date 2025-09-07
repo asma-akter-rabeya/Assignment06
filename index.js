@@ -58,14 +58,15 @@ const showAllCard = (plants) => {
     plants.forEach(plant => {
         // console.log(plant.image)
         allCardContainer.innerHTML += `
-          <div class="border  border-gray-300 rounded-lg">
-                <img class="w-full h-[350px] lg:h-[250px]" src="${plant.image}"/>
-                <h3>${plant.name}</h3>
-                <p>${plant.description}</p>
-                <div class="flex justify-between">
-                    <button class="btn p-2 text-green-700 bg-green-300 rounded-[999px]">${plant.category}</button>
-                    <p>${plant.price}</p>
+          <div class="border  border-gray-300 rounded-lg p-2 space-y-3">
+                <img class="w-full h-[350px] lg:h-[250px] rounded-lg" src="${plant.image}"/>
+                <h3 class="px-2 font-bold text-lg">${plant.name}</h3>
+                <p class="px-2 text-gray-700 lg:h-[120px]">${plant.description}</p>
+                <div class="flex justify-between p-3 items-center">
+                    <button class="btn p-4 text-green-700 bg-green-300 rounded-[999px]">${plant.category}</button>
+                    <p><i class="fa-solid fa-bangladeshi-taka-sign"></i><span>${plant.price}</span></p>
                 </div>
+                <button class="btn text-white bg-green-700 rounded-[999px] btn-block">Add to Cart</button>
             
             </div>
         `
