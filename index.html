@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Green Earth</title>
+    <!-- font awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- daisyui + tailwind -->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+</head>
+
+<body class="bg-[#DCFCE7]">
+    <nav class="lg:w-full mx-auto">
+        <div class="navbar bg-green-700 shadow-sm lg:px-16">
+            <div class="navbar-start">
+                <div class="dropdown">
+                    <div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6h16M4 12h8m-8 6h16" />
+                        </svg>
+                    </div>
+                    <ul tabindex="0"
+                        class="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow text-lg">
+                        <li><a>About</a></li>
+                        <li><a>Gallery</a></li>
+                        <li><a>Plant a Tree</a></li>
+                    </ul>
+                </div>
+                <img class="w-10 bg-transparent rounded-[999px]" src="./assets/about.png" />
+                <a class="btn btn-ghost bg-green-700 text-xl text-white">Green Earth</a>
+            </div>
+            <div class="navbar-center hidden lg:flex">
+                <ul class="menu menu-horizontal px-1 text-white text-lg">
+                    <li><a>About</a></li>
+                    <li><a>Gallery</a></li>
+                    <li><a>Plant a Tree</a></li>
+                </ul>
+            </div>
+            <div class="navbar-end">
+                <a class="btn rounded-[999px] bg-amber-300 ">Plant a Tree</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- hero banner section -->
+    <section class="h-[200px] lg:h-[383px] shadow-md bg-[#CFF0DC] lg:w-11/12 mx-auto  lg:bg-[url('./assets/hero-leaf1.png'),url(./assets/hero-leaf2.png)] 
+              bg-[position:left_top,right_top] 
+              bg-no-repeat 
+              bg-auto">
+        <div class="flex flex-col justify-center items-center h-full text-center space-y-2 lg:space-y-4">
+            <h1 class="text-xl lg:text-5xl font-bold">Plant a Tree, Grow a Future</h1>
+            <p class="text-gray-600">Join our mission to plant 1 million trees and make the Earth greener for future
+                generations.</p>
+            <button class="btn rounded-[999px] bg-amber-300 text-lg text-green-700">Get Involved</button>
+        </div>
+    </section>
+    <!-- all category + card + cart -->
+
+    <section class="lg:w-11/12 mx-auto mt-10 flex flex-col lg:flex-row gap-3">
+        <!-- div for all category -->
+        <div class="lg:w-[15%] ">
+            <h2 class="text-xl p-4 font-bold">Categories</h2>
+            <div id="category-list" class=" flex flex-row gap-3 flex-wrap lg:flex-col">
+
+            </div>
+
+        </div>
+
+        <!--div for showing card  -->
+        <div id="plant-card-container" class=" lg:w-[65%] border-2 grid grid-cols-1 lg:grid-cols-3">
+            <div class="flex justify-center ">
+                <span class="loading loading-spinner loading-xs"></span>
+                <span class="loading loading-spinner loading-sm"></span>
+                <span class="loading loading-spinner loading-md"></span>
+                <span class="loading loading-spinner loading-lg"></span>
+                <span class="loading loading-spinner loading-xl"></span>
+            </div>
+
+
+        </div>
+
+        <!-- div for adding cart -->
+        <div class="w-[20%] h-[300px] border-2">
+
+        </div>
+    </section>
+
+
+
+
+
+
+    <script src="./index.js"></script>
+
+</body>
+
+</html>
