@@ -108,78 +108,44 @@ document.getElementById("close-modal").addEventListener("click", () => {
 
 // functionality for adding card
 // global variable
-let allPrice = []
+
+let allPrice = [];
 let sum = 0;
-const addingCardId = document.getElementById("cart-items")
+const addingCardId = document.getElementById("cart-items");
 
 const addToCart = (plantId) => {
     fetch(`https://openapi.programming-hero.com/api/plant/${plantId}`)
         .then(res => res.json())
         .then((data) => {
-
             const plantName = data.plants.name;
-            const plantPrice = data.plants.price;
+            const plantPrice = parseFloat(data.plants.price);
+
             allPrice.push(plantPrice);
             sum = allPrice.reduce((acc, price) => acc + price, 0);
-            addingCardId.innerHTML += `
-            <div class="flex justify-between items-center bg-white p-4 mb-2">
-                 <div>
-                     <h3 class="font-bold text-lg">${plantName}</h3>
-                      <p class="text-gray-600">${plantPrice} ৳</p>
-                 </div>
-                 <button class="btn">❌</button>
-            </div>
-        `;
+
+            const itemDiv = document.createElement("div");
+            itemDiv.className = "flex justify-between items-center bg-white p-4 mb-2";
+            itemDiv.innerHTML = `
+                <div>
+                    <h3 class="font-bold text-lg">${plantName}</h3>
+                    <p class="text-gray-600">${plantPrice} ৳</p>
+                </div>
+                <button class="btn text-red-500 font-bold">❌</button>
+            `;
+
+            // ❌ button
+            itemDiv.querySelector("button").addEventListener("click", () => {
+                // remove this item's price
+                allPrice.splice(allPrice.indexOf(plantPrice), 1);
+                sum = allPrice.reduce((acc, price) => acc + price, 0);
+                document.getElementById("cart-total").innerText = sum;
+                itemDiv.remove();
+            });
+
+            addingCardId.appendChild(itemDiv);
             document.getElementById("cart-total").innerText = sum;
-
-            // activating the cross button
-            
-
-
-            // console.log(sum);
-            // console.log(allPrice)
-            // console.log(plantName)
-            // console.log(plantPrice)
-        })
-
-
-}
-
-
-// functionality  for adding card
-
-// let cart = [];
-// let total = 0;
-
-// const addToCart = (plant) => {
-//     cart.push(plant);
-//     total += parseFloat(plant.price);
-//     updateCartUI();
-// };
-
-// const removeFromCart = (index) => {
-//     total -= parseFloat(cart[index].price);
-//     cart.splice(index, 1);
-//     updateCartUI();
-// };
-
-// const updateCartUI = () => {
-//     const cartItemsContainer = document.getElementById("cart-items");
-//     cartItemsContainer.innerHTML = "";
-//     cart.forEach((item, index) => {
-//         const div = document.createElement("div");
-//         div.classList.add("flex", "justify-between", "items-center", "border-b", "pb-1");
-//         div.innerHTML = `
-//             <p>${item.name} - ${item.price} ৳</p>
-//             <button class="text-red-500 font-bold" onclick="removeFromCart(${index})">X</button>
-//         `;
-//         cartItemsContainer.appendChild(div);
-//     });
-//     document.getElementById("cart-total").innerText = total.toFixed(2);
-// };
-
-
-
+        });
+};
 
 
 
