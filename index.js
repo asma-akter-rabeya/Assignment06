@@ -62,7 +62,7 @@ const showAllCard = (plants) => {
         // console.log(plant.id)
         allCardContainer.innerHTML += `
           <div class="border  border-gray-300 rounded-lg p-2 space-y-3">
-                <img class="w-full h-[350px] lg:h-[250px] rounded-lg" src="${plant.image}"/>
+                <img class="w-full h-[350px] lg:h-[250px] rounded-lg object-cover" src="${plant.image}"/>
                 <h3 onclick="showModal('${plant.id}')" class="px-2 font-bold text-lg hover:underline">${plant.name}</h3>
                 <p class="px-2 text-gray-700 lg:h-[120px]">${plant.description}</p>
                 <div class="flex justify-between p-3 items-center">
